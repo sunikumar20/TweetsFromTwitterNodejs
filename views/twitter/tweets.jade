@@ -1,0 +1,81 @@
+if profileData && userSummary
+  .row
+    .col-md-12.user-count-detail
+      label Status Count : 
+        span #{userSummary.statusCount} 
+      label List Count : 
+        span #{userSummary.lists} 
+      label Followers Count : 
+        span #{userSummary.followers} 
+      label Favorites Count : 
+        span #{userSummary.favorites} 
+      label Re-Tweets Count : 
+        span #{userSummary.reTweets_count} 
+      
+    .col-md-12.user-detail
+      .col-md-2
+        img.user-pic(src="#{profileData.profile_image}")
+      .col-md-10
+        .col-md-2
+          h4 Name :
+        .col-md-4
+          label #{profileData.name}
+        .col-md-3
+          h4 Profile Created At :
+        .col-md-2
+          label.profile-created #{profileData.createdAt}
+      .col-md-2
+      .col-md-10
+        .col-md-2
+          h4 Description :
+        .col-md-6
+          p #{profileData.description}
+  .row
+    .col-md-12.filter-box
+      Filter
+      .col-md-2
+        .form-group
+          label From
+          input#fromDate.datepicker.form-control(type="text", placeholder='dd/mm/yyyy', value="#{fromDate}")
+
+      .col-md-2
+        .form-group
+          label To
+          input#toDate.datepicker.form-control(type="text", placeholder='dd/mm/yyyy', value="#{toDate}")
+      .col-md-2
+        .form-group
+          label
+          a.col-md-12.btn.btn-default.get-tweets-date-btn(href="javascript:void(0);", data-url="#{url}") Get Tweets
+
+  .tweet-container
+    .row.tweet-data
+      .row
+        .col-md-12
+          table.table.table-bordered
+            caption Tweets
+            thead
+              tr
+                th Text
+                |         
+                th Posted At
+            |     
+            tbody
+              include ./tweet_list
+      .row
+        .col-md-12
+          a.col-md-12.btn.btn-default.more-btn(href="javascript:void(0);", data-url="#{url}") Load More...
+else
+  .tweet-container
+    .row.tweet-data
+      .col-md-12
+        table.table.table-bordered   
+          tbody
+            tr
+              td No Data Found
+
+script(type='text/javascript').
+  $('#fromDate, #toDate').datepicker({
+    format: 'mm/dd/yyyy',
+    autoclose: true,
+    toggleActive: true
+  });

@@ -1,0 +1,7 @@
+each tweet in tweets
+  tr
+    td #{tweet.tweet_text || tweet.text}
+    |         
+    td #{tweet.date || tweet.created_at}
+
+input#maxId(type='hidden' value="#{tweets[tweets.length-1].id}")

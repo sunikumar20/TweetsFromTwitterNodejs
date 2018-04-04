@@ -1,0 +1,76 @@
+html
+  head
+    link(href='./css/main.css', rel='stylesheet')
+    link(href='./css/bootstrap.min.css', rel='stylesheet')
+    script(src="./js/jquery-3.3.1.min.js")
+    link(rel='stylesheet', href='./css/datepicker.css')
+    script(src='./js/bootstrap-datepicker.js')
+    block title
+      title Twitter
+  body
+    .searchbox
+      .header
+        h2 Get Tweets by username
+      .row
+        .col-md-4
+        .col-md-4
+          .form-group
+            input#username.form-control(type="text", name="username", placeholder="Enter Twitter User Name")
+            button.pull-right.btn.btn-default.submit-btn(type='button') Search
+
+    .row.search-result
+
+
+script(type='text/javascript').
+  $(document).ready(function(){
+    $('input[type=text]#username').on('keypress', function(e) {
+        if (e.which == 13) {
+          e.preventDefault();
+          $('.submit-btn').click();
+        }
+    });
+    $(document).on('click','.submit-btn',function(){
+      $.ajax({
+        url: '/search',
+        method: 'get',
+        type: 'json',
+        data: {
+          username: $('#username').val()
+        },
+        success: (function(data){
+          $('.search-result').html('').html(data);
+        })
+      })
+    })
+    $(document).on('click','.more-btn',function(){
+      $.ajax({
+        url: $('.more-btn').data('url'),
+        method: 'get',
+        type: 'json',
+        data: {
+          more: true,
+          max_id: $('#maxId').val()
+        },
+        success: (function(data){
+          $('.tweet-data table tbody').append(data);
+        })
+      })
+    })
+
+    $(document).on('click','.get-tweets-date-btn',function(){
+      $.ajax({
+        url: '/search',
+        method: 'get',
+        type: 'json',
+        data: {
+          username: $('#username').val(),
+          fromDate: $('#fromDate').val(),
+          toDate: $('#toDate').val(),
+          fromDateRang: true
+        },
+        success: (function(data){
+          $('.tweet-container').html($(data).find('.tweet-data'))
+        })
+      })
+    })
+  });

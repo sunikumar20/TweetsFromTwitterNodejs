@@ -1,0 +1,15 @@
+.row
+  .col-md-12
+    table.table.table-bordered
+      caption Tweets
+      thead
+        tr
+          th Text
+          |         
+          th Posted At
+      |     
+      tbody
+        include ./tweet_list
+.row
+  .col-md-12
+    a.col-md-12.btn.btn-default.more-btn(href="javascript:void(0);", data-url="#{url}") Load More...

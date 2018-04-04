@@ -1,0 +1,82 @@
+#username{
+  display: inline-block;
+  width: 82%;
+
+}
+.header {
+  text-align: center;
+}
+
+.searchbox{
+    background-color: #1da1f2;
+    border-color: #1da1f2;
+    margin-top: -20px;
+    color: #fff;
+    border-bottom: 2px solid #0b8ede;
+}
+
+.search-result table{
+  padding: 20px;
+}
+
+body{
+    margin-top: -20px;
+}
+
+.row{
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 4px;
+}
+
+label{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 100 !important;
+}
+
+.user-pic{
+  width: 80px;
+}
+
+.user-count-detail label{
+  padding-right: 80px;
+    font-weight: bold !important;
+    padding-left: 10px;
+}
+.user-count-detail{
+  background-color: rgba(169, 221, 253, 0.38);
+    margin-top: -8px;
+    margin-bottom: 10px;
+}
+
+.user-count-detail label span{
+  font-weight: normal;
+    padding-left: 10px;
+}
+
+table caption{
+  background-color: #efefef;
+  padding: 10px;
+}
+
+.more-btn{
+  margin-bottom: 10px !important;
+  background-color: #31a1f2;
+}
+
+.more-btn:hover{
+  margin-bottom: 10px !important;
+  background-color: #2890dc;
+}
+
+a.get-tweets-date-btn{
+  margin-top: 35px;
+}
+.profile-created{
+  white-space: nowrap;
+}
+
+.filter-box{
+  background-color: #efeff0;
+}
